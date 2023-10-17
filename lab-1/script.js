@@ -284,7 +284,7 @@ function updateAll(ignored) {
 }
 
 document.getElementById('colorSelector')
-    .addEventListener('change', value => {
+    .addEventListener('input', value => {
         let color = value.target.value
         globalColor.r = parseInt(color.substring(1, 3), 16)
         globalColor.g = parseInt(color.substring(3, 5), 16)
