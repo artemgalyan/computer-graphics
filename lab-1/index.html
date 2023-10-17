@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <title>Lab 1</title>
+    <link rel="icon" type="image/x-icon" href="icon.png">
+    <style>
+        .color-div {
+            margin: 10px;
+        }
+
+        html {
+            font-size: 16px;
+            font-family: "Courier New", serif;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-items: stretch;
+            flex-direction: row;
+            gap: 10px;
+        }
+        .selector-row {
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            margin: 5px;
+        }
+        input {
+            padding-left: 2px;
+            border-radius: 3px;
+            border: 1px solid black;
+        }
+        .color-div {
+            width: fit-content;
+            margin: 5px;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <label for="colorSelector">Select color</label>
+    <input type="color" id="colorSelector" style="border-radius: 5px; padding: 0;">
+    <span>< Press here</span>
+</div>
+<div id="rgb" class="color-div"></div>
+<div id="cmyk" class="color-div"></div>
+<div id="hls" class="color-div"></div>
+</body>
+</html>
