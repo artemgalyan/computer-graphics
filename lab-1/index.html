@@ -14,6 +14,7 @@
             font-size: 16px;
             font-family: "Courier New", serif;
         }
+
         .header {
             display: flex;
             align-items: center;
@@ -21,17 +22,20 @@
             flex-direction: row;
             gap: 10px;
         }
+
         .selector-row {
             display: flex;
             flex-direction: row;
             gap: 5px;
             margin: 5px;
         }
+
         input {
             padding-left: 2px;
             border-radius: 3px;
             border: 1px solid black;
         }
+
         .color-div {
             width: fit-content;
             margin: 5px;
@@ -42,13 +46,15 @@
     </style>
 </head>
 <body>
-<div class="header">
-    <label for="colorSelector">Select color</label>
-    <input type="color" id="colorSelector" style="border-radius: 5px; padding: 0;">
-    <span>< Press here</span>
+<div style="display: flex; flex-direction: column; gap: 5px; justify-content: center; align-items: center">
+    <div class="header">
+        <label for="colorSelector">Select color</label>
+        <input type="color" id="colorSelector" style="border-radius: 5px; padding: 0;">
+        <span>< Press here</span>
+    </div>
+    <div id="rgb" class="color-div"></div>
+    <div id="cmyk" class="color-div"></div>
+    <div id="hls" class="color-div"></div>
 </div>
-<div id="rgb" class="color-div"></div>
-<div id="cmyk" class="color-div"></div>
-<div id="hls" class="color-div"></div>
 </body>
 </html>

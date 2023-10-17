@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Артём Галян</title>
+    <style>
+        html {
+            font-size: 16px;
+            font-family: "Courier New", serif;
+            padding: 20px;
+        }
+
+        button {
+            border: 1px solid black;
+            border-radius: 6px;
+            padding: 6px;
+            background-color: white;
+            transition: linear ease-in 0.3s;
+        }
+
+        button:hover {
+            border-radius: 10px;
+            transition: all ease-in 0.2s;
+        }
+
+        .ch1 {
+            background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .rainbow_text_animated {
+            background: linear-gradient(to right, #6666ff, #0099ff, #00ff00, #ff3399, #6666ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow_animation 3s ease-in-out infinite;
+            background-size: 400% 100%;
+        }
+
+        @keyframes rainbow_animation {
+            0%, 100% {
+                background-position: 0 0;
+            }
+
+            50% {
+                background-position: 100% 0;
+            }
+        }
+
+        button {
+            font-size: 25px;
+
+        }
+    </style>
+    <script>
+        function visit(url) {
+            location.href = url
+        }
+    </script>
+    <link rel="icon" type="image/x-icon" href="images/icon.jpg">
+</head>
+<body>
+<div style="display: flex; flex-direction: column; align-items: center">
+    <h1 class="rainbow_text_animated">Это мои лабораторные работы по предмету "Компьютерая графика"</h1>
+    <button class="rainbow_text_animated" onclick="visit('lab-1')">Лабораторная 1</button>
+    <img src="images/cat.jpg" style="width: 30%;"/>
+</div>
+</body>
+</html>

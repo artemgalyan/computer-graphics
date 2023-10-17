@@ -184,13 +184,17 @@ tiedFields = []
 
 function minmaxfilter(minmax, input) {
     return e => {
-        if (e.target.value < minmax[0]) {
+        const v = parseFloat(e.target.value)
+        if (v < minmax[0]) {
             input.value = minmax[0]
-        } else if (e.target.value > minmax[1]) {
+        } else if (v > minmax[1]) {
             input.value = minmax[1]
         }
         if (minmax[2] >= 1) {
             input.value = Math.round(e.target.value)
+        }
+        if (input.value === '') {
+            input.value = minmax[0]
         }
         e.target.value = input.value
     }
