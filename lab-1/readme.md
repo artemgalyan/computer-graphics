@@ -1,6 +1,6 @@
 # Компьютерная графика - Лабораторная 1
 
-[Задеполенное](https://artemgalyan.github.io/computer-graphics/lab-1/)
+[Задеплоенное](https://artemgalyan.github.io/computer-graphics/lab-1/)
 
 ## Галян А.А., 3 Группа
 
