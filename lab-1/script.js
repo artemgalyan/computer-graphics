@@ -140,7 +140,7 @@ class HLS extends Color {
         if (d === 0) {
             this.h = 0
         } else if (cmax === r) {
-            this.h = 60 * (Math.round((g - b) / d))
+            this.h = 60 * ((g - b) / d)
         } else if (cmax === g) {
             this.h = 60 * ((b - r) / d + 2)
         } else {
