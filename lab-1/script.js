@@ -204,14 +204,19 @@ function getInputs(color, fieldName) {
     let input = document.createElement('input')
     const minmax = color.minmax_step[fieldName]
     input.value = minmax[0]
-    input.type = 'number'
-    input.id = fieldName + color.colorName //typeof(color).getName()
+    input.type = 'text'
+    input.id = fieldName + color.colorName
     input.addEventListener('input', minmaxfilter(minmax, input))
     input.addEventListener('input', e => {
+        if (isNaN(e.target.value) || isNaN(parseFloat(e.target.value))) {
+            e.target.value = minmax[0]
+            input.value = minmax[0]
+        }
         color[fieldName] = parseFloat(e.target.value)
         globalColor.loadRgb(color.toRgb())
-        updateAll(color)
+        updateAll(color, input)
     })
+    input.step = minmax[2]
     let label = document.createElement('label')
     label.for = input.id
     label.textContent = fieldName + ': '
@@ -224,7 +229,7 @@ function getInputs(color, fieldName) {
     slider.addEventListener('input', e => {
         color[fieldName] = parseFloat(e.target.value)
         globalColor.loadRgb(color.toRgb())
-        updateAll(color)
+        updateAll(color, slider)
     })
     slider.value = minmax[0]
 
@@ -265,15 +270,15 @@ function to16(i) {
     return r
 }
 
-function updateAll(ignored) {
-    if (ignored !== hls) {
+function updateAll(ignoredColor, ignoredInput) {
+    if (ignoredColor !== hls) {
         hls.loadRgb(globalColor)
     }
-    if (ignored !== cmyk) {
+    if (ignoredColor !== cmyk) {
         cmyk.loadRgb(globalColor)
     }
     for (let o of tiedFields) {
-        if (o['input'].value !== ignored) {
+        if (o['input'].id !== ignoredInput.id) {
             o['input'].value = parseFloat(o['object'][o['fieldName']])
         }
     }
@@ -298,4 +303,4 @@ globalColor.r = rand()
 globalColor.g = rand()
 globalColor.b = rand()
 
-updateAll(globalColor)
+updateAll(globalColor, {'id': null})
