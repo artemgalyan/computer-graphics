@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 2</title>
+    <script src="https://www.lactame.com/lib/image-js/0.21.2/image.min.js"></script>
+    <script src="script.js" defer></script>
+    <style>
+        .element {
+            padding: 2px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid black;
+            border-radius: 5px;
+            clear: both;
+            width: 250px;
+        }
+
+        .filters {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        img {
+            max-height: 200px;
+            max-width: 200px;
+        }
+
+        .selector {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+<body>
+<div class="selector">
+    <div class='chooser'><label for="select-image">Выберите изображение:</label>
+        <input type="file" id="select-image">
+    </div>
+</div>
+
+<div class="filters">
+    <div class="element">
+        <img id="source">
+        <p>Исходное</p>
+    </div>
+    <div class="element">
+        <img id="max-filter">
+        <p>Максимум-фильтр</p>
+    </div>
+    <div class="element">
+        <img id="min-filter">
+        <p>Минимум-фильтр</p>
+    </div>
+    <div class="element">
+        <img id="median-filter">
+        <p>Медианный фильтр</p>
+    </div>
+    <div class="element">
+        <img id="linear-contrasting">
+        <p>Линейное контрастирование</p>
+    </div>
+    <div class="element">
+        <img id="hist-eq">
+        <p>Выравнивание гистограммы (RGB)</p>
+    </div>
+    <div class="element">
+        <img id="hist-eq-hsv">
+        <p>Выравнивание гистограммы (HSV)</p>
+    </div>
+</div>
+</body>
+</html>
