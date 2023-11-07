@@ -64,6 +64,9 @@ class Grid {
     _clickListener() {
         const self = this
         return async e => {
+            if (self._rendering !== undefined) {
+                await self._rendering
+            }
             if (self._manuallyClicked.length === 2) {
                 let toRemove = []
                 for (let created of self._createdPoints) {
@@ -92,6 +95,7 @@ class Grid {
                     this._rendering = drawLineBySteps(self._manuallyClicked[0], self._manuallyClicked[1], this._sleepTime, this._step)
                 }
                 await this._rendering
+                this._rendering = undefined
             }
         }
     }
