@@ -80,7 +80,10 @@ class Grid {
                 }
                 self._manuallyClicked = []
             }
-            const rect = canvas.getBoundingClientRect()
+            const rect = this._canvas.getBoundingClientRect()
+            if (e.x - rect.left <= this._xOffset || e.y - rect.top > this._height) {
+                return
+            }
             let [x, y] = self._getRectCoordsFromClick(e.x - rect.left, e.y - rect.top)
             self._manuallyClicked.push({'x': x, 'y': y})
             if (this._createdPoints.has(x.toString() + ' ' + y.toString())) {
@@ -109,12 +112,18 @@ class Grid {
     }
 
     setPixel(x, y) {
+        if (x < 0 || y < 0) {
+            return
+        }
         const [xRect, yRect] = this._getRectCoords(x, y)
         this._renderingContext.fillRect(xRect, yRect, this._scale, this._scale)
         this._createdPoints.add(x.toString() + ' ' + y.toString())
     }
 
     clearPixel(x, y) {
+        if (x < 0 || y < 0) {
+            return
+        }
         const [xRect, yRect] = this._getRectCoords(x, y)
         this._renderingContext.clearRect(xRect, yRect, this._scale, this._scale)
         this._renderingContext.strokeRect(xRect, yRect, this._scale, this._scale)
@@ -192,11 +201,11 @@ async function drawLineBySteps(start, end, sleepTime = 100, step = 0.01) {
         await timeout(sleepTime * step)
     }
     if (start.x < end.x) {
-        for (let i = start.x + 0.5; i <= end.x; i += step) {
+        for (let i = start.x; i < end.x; i += step) {
             await draw(i)
         }
     } else {
-        for (let i = start.x; i >= end.x; i -= step) {
+        for (let i = start.x; i > end.x; i -= step) {
             await draw(i)
         }
     }
